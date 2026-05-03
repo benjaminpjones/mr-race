@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_car"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(2.2, 1.2, 4.0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(2.2, 1.2, 4.0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cab"]
+size = Vector3(2.0, 1.0, 2.2)
+
+[sub_resource type="StandardMaterial3D" id="Mat_body"]
+albedo_color = Color(0.1, 0.6, 0.2, 1)
+
+[node name="MonsterTruck" type="VehicleBody3D"]
+mass = 1800.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.5, 0)
+script = ExtResource("1_car")
+max_steer = 0.4
+steer_speed = 1.8
+engine_power = 1400.0
+reverse_power = 600.0
+brake_force = 10.0
+
+[node name="ChassisCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_body")
+surface_material_override/0 = SubResource("Mat_body")
+
+[node name="Cab" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, 0.0)
+mesh = SubResource("BoxMesh_cab")
+surface_material_override/0 = SubResource("Mat_body")
+
+[node name="WheelFL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.0, -1.4)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.85
+wheel_friction_slip = 4.0
+suspension_stiffness = 35.0
+suspension_max_force = 16000.0
+suspension_travel = 0.5
+
+[node name="WheelFR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.0, -1.4)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.85
+wheel_friction_slip = 4.0
+suspension_stiffness = 35.0
+suspension_max_force = 16000.0
+suspension_travel = 0.5
+
+[node name="WheelRL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, 0.0, 1.4)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.85
+wheel_friction_slip = 4.0
+suspension_stiffness = 35.0
+suspension_max_force = 16000.0
+suspension_travel = 0.5
+
+[node name="WheelRR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.0, 1.4)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.85
+wheel_friction_slip = 4.0
+suspension_stiffness = 35.0
+suspension_max_force = 16000.0
+suspension_travel = 0.5

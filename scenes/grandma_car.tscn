@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_car"]
+[ext_resource type="FontFile" path="res://assets/NotoSansKR.ttf" id="2_font"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(2.0, 1.0, 3.0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(2.0, 1.0, 3.0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_roof"]
+radius = 1.0
+height = 1.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_plate"]
+size = Vector3(0.6, 0.22, 0.04)
+
+[sub_resource type="StandardMaterial3D" id="Mat_yellow"]
+albedo_color = Color(1.0, 0.85, 0.1, 1)
+metallic = 0.2
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_plate"]
+albedo_color = Color(0.95, 0.95, 0.95, 1)
+
+[node name="GrandmaCar" type="VehicleBody3D"]
+mass = 900.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.3, 0)
+script = ExtResource("1_car")
+max_steer = 0.5
+steer_speed = 2.0
+engine_power = 1000.0
+reverse_power = 350.0
+brake_force = 8.0
+
+[node name="ChassisCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+mesh = SubResource("BoxMesh_body")
+surface_material_override/0 = SubResource("Mat_yellow")
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.05, 0, 0, 0, 0.9, 0, 0, 0, 1.2, 0, 1.4, -0.1)
+mesh = SubResource("SphereMesh_roof")
+surface_material_override/0 = SubResource("Mat_yellow")
+
+[node name="Plate" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 1.51)
+mesh = SubResource("BoxMesh_plate")
+surface_material_override/0 = SubResource("Mat_plate")
+
+[node name="PlateText" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 1.56)
+billboard = 2
+pixel_size = 0.0025
+text = "할머니"
+font = ExtResource("2_font")
+font_size = 72
+modulate = Color(0, 0, 0, 1)
+outline_modulate = Color(1, 1, 1, 0)
+outline_size = 0
+double_sided = true
+render_priority = 1
+
+[node name="WheelFL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, -1.2)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.55
+wheel_friction_slip = 4.0
+suspension_stiffness = 45.0
+suspension_max_force = 12000.0
+suspension_travel = 0.4
+
+[node name="WheelFR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, -1.2)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.55
+wheel_friction_slip = 4.0
+suspension_stiffness = 45.0
+suspension_max_force = 12000.0
+suspension_travel = 0.4
+
+[node name="WheelRL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, 1.2)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.55
+wheel_friction_slip = 4.0
+suspension_stiffness = 45.0
+suspension_max_force = 12000.0
+suspension_travel = 0.4
+
+[node name="WheelRR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, 1.2)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.55
+wheel_friction_slip = 4.0
+suspension_stiffness = 45.0
+suspension_max_force = 12000.0
+suspension_travel = 0.4

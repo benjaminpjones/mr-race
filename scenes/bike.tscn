@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/car.gd" id="1_car"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
+size = Vector3(0.5, 0.6, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_body"]
+size = Vector3(0.5, 0.6, 2.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_seat"]
+size = Vector3(0.45, 0.25, 0.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_handlebar"]
+size = Vector3(0.7, 0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_body"]
+albedo_color = Color(0.1, 0.1, 0.12, 1)
+
+[sub_resource type="StandardMaterial3D" id="Mat_accent"]
+albedo_color = Color(0.95, 0.4, 0.05, 1)
+
+[node name="Bike" type="VehicleBody3D"]
+mass = 220.0
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.35, 0)
+script = ExtResource("1_car")
+max_steer = 0.55
+steer_speed = 3.5
+engine_power = 1100.0
+reverse_power = 250.0
+brake_force = 5.0
+upright_torque = 2500.0
+upright_damping = 400.0
+
+[node name="ChassisCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+shape = SubResource("BoxShape3D_chassis")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+mesh = SubResource("BoxMesh_body")
+surface_material_override/0 = SubResource("Mat_body")
+
+[node name="Seat" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0.3)
+mesh = SubResource("BoxMesh_seat")
+surface_material_override/0 = SubResource("Mat_accent")
+
+[node name="Handlebar" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.8)
+mesh = SubResource("BoxMesh_handlebar")
+surface_material_override/0 = SubResource("Mat_accent")
+
+[node name="WheelF" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -0.95)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.32
+wheel_friction_slip = 4.5
+suspension_stiffness = 60.0
+suspension_max_force = 12000.0
+
+[node name="WheelR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0.95)
+use_as_traction = true
+use_as_steering = false
+wheel_radius = 0.32
+wheel_friction_slip = 4.5
+suspension_stiffness = 60.0
+suspension_max_force = 12000.0
+
+[node name="StabilizerL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4, 0)
+use_as_traction = false
+use_as_steering = false
+wheel_radius = 0.05
+wheel_friction_slip = 0.05
+suspension_stiffness = 40.0
+suspension_max_force = 600.0
+suspension_travel = 0.1
+
+[node name="StabilizerR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.4, 0)
+use_as_traction = false
+use_as_steering = false
+wheel_radius = 0.05
+wheel_friction_slip = 0.05
+suspension_stiffness = 40.0
+suspension_max_force = 600.0
+suspension_travel = 0.1

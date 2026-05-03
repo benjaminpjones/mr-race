@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_hud"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_hud")
+
+[node name="Left" type="Button" parent="."]
+offset_left = 40.0
+offset_top = 540.0
+offset_right = 180.0
+offset_bottom = 680.0
+text = "<"
+
+[node name="Right" type="Button" parent="."]
+offset_left = 200.0
+offset_top = 540.0
+offset_right = 340.0
+offset_bottom = 680.0
+text = ">"
+
+[node name="Brake" type="Button" parent="."]
+offset_left = 940.0
+offset_top = 540.0
+offset_right = 1080.0
+offset_bottom = 680.0
+text = "BRAKE"
+
+[node name="Gas" type="Button" parent="."]
+offset_left = 1100.0
+offset_top = 540.0
+offset_right = 1240.0
+offset_bottom = 680.0
+text = "GAS"
+
+[node name="Switch" type="Button" parent="."]
+offset_left = 1100.0
+offset_top = 40.0
+offset_right = 1240.0
+offset_bottom = 100.0
+text = "SWITCH"
+
+[connection signal="button_down" from="Left" to="." method="_on_left_button_down"]
+[connection signal="button_up" from="Left" to="." method="_on_left_button_up"]
+[connection signal="button_down" from="Right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="Right" to="." method="_on_right_button_up"]
+[connection signal="button_down" from="Gas" to="." method="_on_gas_button_down"]
+[connection signal="button_up" from="Gas" to="." method="_on_gas_button_up"]
+[connection signal="button_down" from="Brake" to="." method="_on_brake_button_down"]
+[connection signal="button_up" from="Brake" to="." method="_on_brake_button_up"]
+[connection signal="pressed" from="Switch" to="." method="_on_switch_pressed"]
