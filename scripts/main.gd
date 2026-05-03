@@ -9,10 +9,13 @@ var _index: int = 0
 
 @onready var _camera: Camera3D = $ChaseCamera
 @onready var _hud: CanvasLayer = $HUD
+@onready var _floor: Node = get_node_or_null("Track/FallingFloor")
 
 func _ready() -> void:
 	if _hud.has_signal("switch_pressed"):
 		_hud.switch_pressed.connect(switch_vehicle)
+	if _floor and _floor.has_signal("blocks_removed_changed") and _hud.has_method("set_blocks"):
+		_floor.blocks_removed_changed.connect(_hud.set_blocks)
 	_spawn_at_origin()
 
 func _physics_process(_delta: float) -> void:
@@ -24,6 +27,8 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_V or event.keycode == KEY_SPACE:
 			switch_vehicle()
 		elif event.keycode == KEY_R:
+			if _floor and _floor.has_method("reset"):
+				_floor.reset()
 			_spawn_at_origin()
 
 func switch_vehicle() -> void:
@@ -53,3 +58,5 @@ func _spawn_current(pos: Vector3, rot: Basis) -> void:
 	_current = v
 	if _camera and _camera.has_method("set_target"):
 		_camera.set_target(v)
+	if _floor and _floor.has_method("set_vehicle"):
+		_floor.set_vehicle(v)

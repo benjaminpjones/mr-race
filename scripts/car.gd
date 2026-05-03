@@ -5,7 +5,7 @@ extends VehicleBody3D
 @export var engine_power: float = 800.0
 @export var reverse_power: float = 350.0
 @export var brake_force: float = 6.0
-@export var idle_brake: float = 0.5
+@export var idle_brake: float = 0.0
 @export var upright_torque: float = 0.0
 @export var upright_damping: float = 0.0
 

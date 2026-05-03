@@ -2,6 +2,12 @@ extends CanvasLayer
 
 signal switch_pressed
 
+@onready var _blocks_label: Label = $Blocks
+
+func set_blocks(count: int) -> void:
+	if _blocks_label:
+		_blocks_label.text = "Blocks: %d" % count
+
 func _on_left_button_down() -> void:  Input.action_press("ui_left")
 func _on_left_button_up() -> void:    Input.action_release("ui_left")
 func _on_right_button_down() -> void: Input.action_press("ui_right")

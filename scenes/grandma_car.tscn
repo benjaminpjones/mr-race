@@ -31,8 +31,8 @@ center_of_mass = Vector3(0, -0.3, 0)
 script = ExtResource("1_car")
 max_steer = 0.5
 steer_speed = 2.0
-engine_power = 1000.0
-reverse_power = 350.0
+engine_power = 1500.0
+reverse_power = 500.0
 brake_force = 8.0
 
 [node name="ChassisCollision" type="CollisionShape3D" parent="."]
@@ -71,38 +71,38 @@ render_priority = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, -1.2)
 use_as_traction = true
 use_as_steering = true
-wheel_radius = 0.55
-wheel_friction_slip = 4.0
-suspension_stiffness = 45.0
-suspension_max_force = 12000.0
-suspension_travel = 0.4
+wheel_radius = 0.7
+wheel_friction_slip = 5.0
+suspension_stiffness = 55.0
+suspension_max_force = 15000.0
+suspension_travel = 0.45
 
 [node name="WheelFR" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, -1.2)
 use_as_traction = true
 use_as_steering = true
-wheel_radius = 0.55
-wheel_friction_slip = 4.0
-suspension_stiffness = 45.0
-suspension_max_force = 12000.0
-suspension_travel = 0.4
+wheel_radius = 0.7
+wheel_friction_slip = 5.0
+suspension_stiffness = 55.0
+suspension_max_force = 15000.0
+suspension_travel = 0.45
 
 [node name="WheelRL" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, 1.2)
 use_as_traction = true
 use_as_steering = false
-wheel_radius = 0.55
-wheel_friction_slip = 4.0
-suspension_stiffness = 45.0
-suspension_max_force = 12000.0
-suspension_travel = 0.4
+wheel_radius = 0.7
+wheel_friction_slip = 5.0
+suspension_stiffness = 55.0
+suspension_max_force = 15000.0
+suspension_travel = 0.45
 
 [node name="WheelRR" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, 1.2)
 use_as_traction = true
 use_as_steering = false
-wheel_radius = 0.55
-wheel_friction_slip = 4.0
-suspension_stiffness = 45.0
-suspension_max_force = 12000.0
-suspension_travel = 0.4
+wheel_radius = 0.7
+wheel_friction_slip = 5.0
+suspension_stiffness = 55.0
+suspension_max_force = 15000.0
+suspension_travel = 0.45

@@ -27,8 +27,8 @@ center_of_mass = Vector3(0, -0.35, 0)
 script = ExtResource("1_car")
 max_steer = 0.55
 steer_speed = 3.5
-engine_power = 1100.0
-reverse_power = 250.0
+engine_power = 1600.0
+reverse_power = 350.0
 brake_force = 5.0
 upright_torque = 2500.0
 upright_damping = 400.0
@@ -56,19 +56,19 @@ surface_material_override/0 = SubResource("Mat_accent")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -0.95)
 use_as_traction = true
 use_as_steering = true
-wheel_radius = 0.32
-wheel_friction_slip = 4.5
-suspension_stiffness = 60.0
-suspension_max_force = 12000.0
+wheel_radius = 0.45
+wheel_friction_slip = 5.5
+suspension_stiffness = 70.0
+suspension_max_force = 15000.0
 
 [node name="WheelR" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0.95)
 use_as_traction = true
 use_as_steering = false
-wheel_radius = 0.32
-wheel_friction_slip = 4.5
-suspension_stiffness = 60.0
-suspension_max_force = 12000.0
+wheel_radius = 0.45
+wheel_friction_slip = 5.5
+suspension_stiffness = 70.0
+suspension_max_force = 15000.0
 
 [node name="StabilizerL" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4, 0)

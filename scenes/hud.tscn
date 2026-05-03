@@ -5,6 +5,14 @@
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_hud")
 
+[node name="Blocks" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 56.0
+theme_override_font_sizes/font_size = 28
+text = "Blocks: 0"
+
 [node name="Left" type="Button" parent="."]
 offset_left = 40.0
 offset_top = 540.0
