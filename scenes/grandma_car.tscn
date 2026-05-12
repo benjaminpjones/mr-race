@@ -1,7 +1,15 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_car"]
 [ext_resource type="FontFile" path="res://assets/NotoSansKR.ttf" id="2_font"]
+
+[sub_resource type="CylinderMesh" id="Tire_mesh"]
+top_radius = 0.7
+bottom_radius = 0.7
+height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="Mat_tire"]
+albedo_color = Color(0.08, 0.08, 0.08, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
 size = Vector3(2.0, 1.0, 3.0)
@@ -77,6 +85,11 @@ suspension_stiffness = 55.0
 suspension_max_force = 15000.0
 suspension_travel = 0.45
 
+[node name="Tire" type="MeshInstance3D" parent="WheelFL"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Tire_mesh")
+surface_material_override/0 = SubResource("Mat_tire")
+
 [node name="WheelFR" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, -1.2)
 use_as_traction = true
@@ -86,6 +99,11 @@ wheel_friction_slip = 5.0
 suspension_stiffness = 55.0
 suspension_max_force = 15000.0
 suspension_travel = 0.45
+
+[node name="Tire" type="MeshInstance3D" parent="WheelFR"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Tire_mesh")
+surface_material_override/0 = SubResource("Mat_tire")
 
 [node name="WheelRL" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95, 0.0, 1.2)
@@ -97,6 +115,11 @@ suspension_stiffness = 55.0
 suspension_max_force = 15000.0
 suspension_travel = 0.45
 
+[node name="Tire" type="MeshInstance3D" parent="WheelRL"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Tire_mesh")
+surface_material_override/0 = SubResource("Mat_tire")
+
 [node name="WheelRR" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.95, 0.0, 1.2)
 use_as_traction = true
@@ -106,3 +129,8 @@ wheel_friction_slip = 5.0
 suspension_stiffness = 55.0
 suspension_max_force = 15000.0
 suspension_travel = 0.45
+
+[node name="Tire" type="MeshInstance3D" parent="WheelRR"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Tire_mesh")
+surface_material_override/0 = SubResource("Mat_tire")

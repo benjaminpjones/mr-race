@@ -1,6 +1,21 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Script" path="res://scripts/car.gd" id="1_car"]
+
+[sub_resource type="CylinderMesh" id="Tire_mesh"]
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.18
+
+[sub_resource type="StandardMaterial3D" id="Mat_tire"]
+albedo_color = Color(0.08, 0.08, 0.08, 1)
+
+[sub_resource type="SphereMesh" id="Egg_mesh"]
+radius = 0.08
+height = 0.22
+
+[sub_resource type="StandardMaterial3D" id="Mat_egg"]
+albedo_color = Color(0.98, 0.96, 0.88, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_chassis"]
 size = Vector3(0.5, 0.6, 2.2)
@@ -47,6 +62,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0.3)
 mesh = SubResource("BoxMesh_seat")
 surface_material_override/0 = SubResource("Mat_accent")
 
+[node name="Egg1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.79, 0.15)
+mesh = SubResource("Egg_mesh")
+surface_material_override/0 = SubResource("Mat_egg")
+
+[node name="Egg2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08, 0.79, 0.25)
+mesh = SubResource("Egg_mesh")
+surface_material_override/0 = SubResource("Mat_egg")
+
+[node name="Egg3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06, 0.79, 0.42)
+mesh = SubResource("Egg_mesh")
+surface_material_override/0 = SubResource("Mat_egg")
+
+[node name="Egg4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.79, 0.5)
+mesh = SubResource("Egg_mesh")
+surface_material_override/0 = SubResource("Mat_egg")
+
 [node name="Handlebar" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.8)
 mesh = SubResource("BoxMesh_handlebar")
@@ -61,6 +96,11 @@ wheel_friction_slip = 5.5
 suspension_stiffness = 70.0
 suspension_max_force = 15000.0
 
+[node name="Tire" type="MeshInstance3D" parent="WheelF"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Tire_mesh")
+surface_material_override/0 = SubResource("Mat_tire")
+
 [node name="WheelR" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, 0.95)
 use_as_traction = true
@@ -69,6 +109,11 @@ wheel_radius = 0.45
 wheel_friction_slip = 5.5
 suspension_stiffness = 70.0
 suspension_max_force = 15000.0
+
+[node name="Tire" type="MeshInstance3D" parent="WheelR"]
+transform = Transform3D(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("Tire_mesh")
+surface_material_override/0 = SubResource("Mat_tire")
 
 [node name="StabilizerL" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.4, 0)

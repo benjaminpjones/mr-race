@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=9 format=3]
 
 [ext_resource type="PackedScene" path="res://scenes/track.tscn" id="1_track"]
 [ext_resource type="PackedScene" path="res://scenes/hud.tscn" id="2_hud"]
@@ -8,10 +8,11 @@
 [ext_resource type="PackedScene" path="res://scenes/bike.tscn" id="6_bike"]
 [ext_resource type="PackedScene" path="res://scenes/monster_truck.tscn" id="7_truck"]
 [ext_resource type="PackedScene" path="res://scenes/grandma_car.tscn" id="8_grandma"]
+[ext_resource type="PackedScene" path="res://scenes/tractor.tscn" id="9_tractor"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("4_main")
-vehicle_scenes = [ExtResource("5_car"), ExtResource("6_bike"), ExtResource("7_truck"), ExtResource("8_grandma")]
+vehicle_scenes = [ExtResource("5_car"), ExtResource("6_bike"), ExtResource("7_truck"), ExtResource("8_grandma"), ExtResource("9_tractor")]
 
 [node name="Track" parent="." instance=ExtResource("1_track")]
 

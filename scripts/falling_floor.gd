@@ -10,6 +10,7 @@ signal blocks_removed_changed(count: int)
 @export var top_y: float = 0.0
 @export var safe_radius_tiles: float = 4.0
 @export var fuse: float = 0.4
+@export var tiles_fall: bool = true
 
 const STATE_GONE := 0
 const STATE_SAFE := 1
@@ -165,6 +166,8 @@ func _build() -> void:
 				fall_idx += 1
 
 func _physics_process(_delta: float) -> void:
+	if not tiles_fall:
+		return
 	if not _vehicle or not is_instance_valid(_vehicle):
 		_check_fuses(Engine.get_physics_frames())
 		return
